@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: auto;
+        }
+
+        #inputs {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            gap: 2px;
+        }
+
+        #labels, #choices {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        #labels {
+            gap: 18px;
+            align-items: end;
+        }
+
+        #choices > select {
+            width: 100%;
+            background-color: #e4e4e4;
+        }
+
+        #insert {
+            margin: 10px 10px 10px 192px;
+        }
+
+        #data, td, th {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <h1>Форма за внесување оцени</h1>
+    <div id="inputs">
+        <div id="labels">
+            <label for="name">Име:</label>
+            <label for="second-name">Презиме:</label>
+            <label for="index">Индекс:</label>
+            <label for="subject">Предмет:</label>
+            <label for="grade">Оцена:</label>
+        </div>
+        <div id="choices">
+            <input type="text" id="name">
+            <input type="text" id="second-name">
+            <input type="text" id="index">
+            <input type="text" id="subject">
+            <select name="grade" id="grade">
+                <option value="5 (пет)">5 (пет)</option>
+                <option value="6( шест)">6( шест)</option>
+                <option value="7 (седум)">7 (седум)</option>
+                <option value="8 (осум)">8 (осум)</option>
+                <option value="9 (девет)">9 (девет)</option>
+                <option value="10(десет)">10 (десте)</option>
+            </select>
+        </div>
+    </div>
+    <button id="insert" onclick="addGrade()">Внеси</button>
+    <div id="table-root">
+        <table id="data">
+            <tr>
+                <th>Име</th>
+                <th>Презиме</th>
+                <th>Индекс</th>
+                <th>Предмет</th>
+                <th>Оцена</th>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript">
+    let students = []
+    function addGrade() {
+        let name = document.getElementById("name")
+        let secondName = document.getElementById("second-name")
+        let index = document.getElementById("index")
+        let subject = document.getElementById("subject")
+        let grade = document.getElementById("grade").value
+        let table = document.getElementById("data")
+        if (name && secondName && index && subject && grade) {
+            let row = document.createElement("tr")
+            students.push({
+                name: name.value,
+                secondName: secondName.value,
+                index: index.value,
+                subject: subject.value,
+                grade: grade
+            })
+            console.log(students)
+            row.innerHTML = ("<td>" + name.value + "</td>") +("<td>" + secondName.value + "</td>") + ("<td>" + index.value + "</td>")+("<td>" + subject.value + "</td>") + ("<td>" + grade + "</td>")
+            console.log(row)
+            table.appendChild(row)
+            name.value = ""
+            secondName.value = ""
+            index.value = ""
+            subject.value = ""
+        } else {
+            alert("Пополни ги сите полиња")
+        }
+    }
+</script>
+</body>
+</html>

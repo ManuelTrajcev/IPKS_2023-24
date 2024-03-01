@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<ul id="list">
+
+</ul>
+<button onclick="add()" id="add">add</button>
+<button onclick="remove()" id="remove">remove</button>
+
+<script type="text/javascript">
+    let noli = 1
+
+    function add() {
+        document.getElementById('list').insertAdjacentHTML('beforeend', '<li>item</li>')
+        update(true)
+        document.getElementById('add').value = 'add' + (noli + 1)
+    }
+
+    function remove() {
+        document.getElementById('list').removeChild(document.getElementById('list').lastChild)
+        update(false)
+        document.getElementById('add').value = 'add' + (noli + 1)
+    }
+
+    function update(inc) {
+        inc ? document.getElementsByTagName("label")[0].innerHTML = ++noli : document.getElementsByTagName('label')[0].innerHTML = --noli
+    }
+
+</script>
+</body>
+</html>

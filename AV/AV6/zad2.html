@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    let library = [
+        {
+            author: 'Bil Gates',
+            title: 'The Road Ahead',
+            readingStatus: true
+        },
+        {
+            author: 'Steve Jobs',
+            title: 'Walter Isaacson',
+            readingStatus: true
+        },
+        {
+            author: 'Suzanne Collins',
+            title: 'Mockingjay: The Final Book of The Hunger Games',
+            readingStatus: false
+        }
+    ]
+    function printLibrary(obj) {
+        for (x of obj) {
+            console.log(x.author + ' ' + x.title)
+            if (x.readingStatus) {
+                console.log("Book already read")
+            } else {
+                console.log("Yet to read")
+            }
+        }
+    }
+    printLibrary(library)
+</script>
+</body>
+</html>

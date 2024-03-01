@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    class Cylinder {
+        constructor(r,h) {
+            this.r = r
+            this.h = h
+        }
+
+        volume() {
+            return Math.PI * this.r * this.r * this.h
+        }
+    }
+
+    let c = new Cylinder(2,5)
+    console.log(c.volume())
+</script>
+</body>
+</html>

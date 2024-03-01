@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form>
+    Select your favourite color:
+    <select id="mySelect">
+        <option value="Red">Red</option>
+        <option value="Blue">Blue</option>
+        <option value="Green">Green</option>
+    </select>
+    <input type="button" onclick="getOptions()" value="Count and Output all items">
+</form>
+<script>
+    function getOptions() {
+        var x = document.getElementById("mySelect")
+        var txt = "Elemets: "
+        for (let i = 0; i < x.length; i++) {
+            txt += x.options[i].text + " "
+        }
+        alert(txt)
+    }
+</script>
+</body>
+</html>

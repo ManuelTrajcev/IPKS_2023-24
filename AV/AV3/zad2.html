@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="button" value="Clcick me" onclick="changeBackground()">
+<p>Hello</p>
+<p>World</p>
+<p>World</p>
+<p>World</p>
+<p>World</p>
+<script>
+    let counter = 0
+
+    function changeBackground() {
+        var bd = document.getElementsByTagName("body")[0]
+        bdElements = bd.getElementsByTagName("p")
+        bdElements[counter].style.background = "red"
+        counter++
+        x.style.background = "red"
+    }
+</script>
+</body>
+</html>

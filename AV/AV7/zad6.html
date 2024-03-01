@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+    let a = [1, 2, 3, 4, 5]
+    let b = [12, [4], [23, [4]], [5, 6]]
+    console.log(difference(a, b))
+
+    function difference(a, b) {
+        let aFlatten = a.flat(Infinity)
+        let bFlatten = b.flat(Infinity)
+        let res = []
+
+        res = aFlatten.filter(x => !bFlatten.includes(x))
+        res = res.concat(bFlatten.filter(x => !aFlatten.includes(x)))
+
+        return res
+    }
+
+
+</script>
+
+</body>
+</html>

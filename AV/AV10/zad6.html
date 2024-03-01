@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="https://d3js.org/d3.v4.min.js">
+    </script>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+
+
+</div>
+<script>
+    var svg = d3.select("body")
+    .append("svg")
+    .attr("width", 500)
+    .attr("height", 500)
+    var bar1 = svg
+        .append("rect")
+        .attr("fill", "blue")
+        .attr("x", 100)
+        .attr("y", 20)
+        .attr("width", 10)
+        .attr("height", 20)
+    update()
+
+    function update() {
+        bar1.transition.ease(dr.)
+    }
+</script>
+</body>
+</html>

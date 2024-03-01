@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+<p id="my-animation" style="position: absolute">Animation</p>
+
+<script type="text/javascript">
+    elem = document.getElementById("my-animation")
+    pos = 0
+    id = setInterval(frame, 10)
+    let dir = true
+
+    function frame() {
+
+        if (pos > 350) {
+            dir = false
+        }
+        if (pos < 10) {
+            dir = true
+        }
+        if (dir) {
+            pos++
+        } else {
+            pos--
+        }
+        elem.style.top = pos + 'px'
+        elem.style.left = pos + 'px'
+    }
+
+    setInterval(changeColor, 500)
+
+
+</script>
+</body>
+</html>

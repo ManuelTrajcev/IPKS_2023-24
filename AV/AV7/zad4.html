@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<input type="text" id="in" >
+<button id="btn" onclick="addValue()">Add</button>
+<button id="display" onclick="displayValue()">Display</button>
+<hr>
+<div id="result">
+</div>
+<script>
+    let arr = []
+
+    function addValue() {
+        if (document.getElementById("in").value != "")
+            arr.push(document.getElementById("in").value)
+        document.getElementById("in").value = ""
+    }
+
+    function displayValue() {
+        let result = document.getElementById("result")
+        console.log(arr)
+        let content = ""
+        // for (let i = 0; i < arr.length; i++) {
+        //     let el = document.createElement("p")
+        //     let br = document.createElement("br")
+        //     el.textContent = `Element ${i} = ${arr[i]} `
+        //     result.append(el)
+        //     result.appendChild(br)
+        // }
+        let res = document.createElement("p")
+        for (let i = 0; i < arr.length; i++) {
+            content = arr[i]
+            let el = document.createTextNode(`Element ${i} = ${content}`)
+            res.append(el)
+            res.append(document.createElement("br"))
+        }
+        result.appendChild(res)
+    }
+</script>
+</body>
+</html>

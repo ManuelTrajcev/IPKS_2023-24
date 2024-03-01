@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    let str = "Hello how are you today"
+    let sub
+    console.log(str)
+    console.log(sub)
+    console.log(insert(str,sub,17))
+    function insert(str1, str2, pos) {
+        if (typeof(pos) == "undefined"){
+            pos = 0
+        }else if (typeof(str2) == "undefined") {
+            str2 = ""
+        }
+        return str1.slice(0, pos) + str2 + str1.slice(pos)
+    }
+</script>
+</body>
+</html>

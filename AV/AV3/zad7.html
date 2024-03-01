@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Input radius and get the value of a sphere</h1>
+<form action="" method="post" id="myForm">
+<label for="radius">Radius</label>
+    <input type="number" name="radius" id="radius">
+    <br>
+    <br>
+<label for="volume">Volume</label>
+    <input type="number" name="volume" id="volume">
+    <br>
+    <br>
+    <input type="submit" value="Calculate" id="submit" onclick="calculate()">
+</form>
+<script>
+    function calculate() {
+        var r = document.getElementById("radius")
+        r = r.value
+        var v = 3/4*r*r*r*3.14
+        var vol = document.getElementById("volume")
+        vol.value = v
+        
+    }
+    window.onload = document.getElementById("myForm").onsubmit = calculate
+</script>
+</body>
+</html>

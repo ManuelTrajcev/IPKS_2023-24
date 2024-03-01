@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+
+    let str = "Hello how are you"
+    let del = "no"
+    console.log(searchAndDelete(str,del))
+
+    function searchAndDelete(str, del) {
+        let index =  str.indexOf(del)
+        if (index === -1){
+            return str
+        } else {
+            return str.slice(0, index) + str.slice(index+del.length)
+        }
+    }
+</script>
+</body>
+</html>

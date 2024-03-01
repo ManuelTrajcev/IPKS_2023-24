@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html">
+    <script>
+        let number = Math.floor(Math.random() * 8999 + 1000)
+        let attempts = 0
+
+
+        function guess() {
+            let input = document.getElementById("guess")
+            let charsInGuess = input.value.split('')
+            let charsInNumber = number.toString().split('')
+            let root = document.getElementById("prikazi")
+            let att = document.getElementById("obid")
+            if (charsInGuess.length !== 4) {
+                alert("Бројот не е четирицифрен!")
+                return
+            }
+            if (attempts === 10) {
+                alert("Немаш пресотанато обиди")
+                reset()
+                return
+            }
+            attempts++
+            att.innerHTML = "Обиди " + attempts
+
+            // console.log(charsInGuess)
+            // console.log(charsInNumber)
+
+            let contains = 0
+            let correctPosition = 0
+            for (let i = 0; i < charsInGuess.length; i++) {
+                if (charsInGuess.includes(charsInNumber[i])) {
+                    contains++
+                }
+                if (charsInGuess[i] === charsInNumber[i]) {
+                    correctPosition++
+                }
+            }
+            if (correctPosition === 4) {
+                let txt = document.createTextNode(`ПОГОДОК!`)
+                let node = document.createElement("p").appendChild(txt)
+                root.append(node)
+                root.append(document.createElement("br"))
+            } else {
+                let txt = document.createTextNode(`Има ${contains}, на место ${correctPosition}`)
+                let node = document.createElement("p").appendChild(txt)
+                root.append(node)
+                root.append(document.createElement("br"))
+            }
+
+            // console.log(correctPosition)
+            // console.log(contains)
+        }
+
+        function reset() {
+            let root = document.getElementById("prikazi")
+            let att = document.getElementById("obid")
+            attempts = 0
+            attempts = 0
+            number = Math.floor(Math.random() * 8999 + 1000)
+            root.innerHTML = ""
+            att.innerHTML = "Обиди 0"
+        }
+
+    </script>
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <div style="text-align: right; float: left">
+        <label for="guess" id="obid">Обиди 0</label>
+        <p>Погодок:<input id="guess" style="width: 150px"></p>
+        <button onclick="guess()">Погоди</button>
+        <button onclick="reset()">Од почеток</button>
+    </div>
+</div>
+<br>
+<div id="prikazi" style="clear: both">
+
+</div>
+</body>
+</html>

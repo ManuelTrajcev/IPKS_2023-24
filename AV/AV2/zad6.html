@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    let x = prompt("Vnesi:")
+    let counter2 = 0
+    let counter1 = 0
+    let counter0 = 0
+    while (!isNaN(x)) {
+        if (x % 3 == 0) {
+            counter0++
+        } else if (x % 3 == 1) {
+            counter1++
+        } else {
+            counter2++
+        }
+        x = prompt("Vnesi:")
+    }
+    console.log(`Vnesovte ${counter0} broevi koi imaat ostatok 0`)
+    console.log(`Vnesovte ${counter1} broevi koi imaat ostatok 1`)
+    console.log(`Vnesovte ${counter2} broevi koi imaat ostatok 2`)
+</script>
+</body>
+</html>

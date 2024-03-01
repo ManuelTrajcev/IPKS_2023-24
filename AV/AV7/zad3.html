@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let str = "02548268"
+    console.log(evenMinus(str))
+
+    function evenOdd(num) {
+        let result = []
+        if (num === undefined) return null
+        if (num.length < 2) return num
+
+        result.push(num[0])
+        for (let i = 1; i < num.length; i++) {
+            if (parseInt(num[i - 1]) % 2 === 0 && parseInt(num[i]) % 2 === 0) {
+                result.push('-')
+            }
+            result.push(num[i])
+        }
+
+        return result.join("")
+    }
+
+    function evenMinus(n) {
+        let res = []
+        for (let i = 0; i < n.length - 1; i++) {
+            res.push(n[i])
+            if (parseInt(n[i]) % 2 === 0 && parseInt(n[i + 1]) % 2 === 0) {
+                res.push("-")
+            }
+        }
+        return res.join("")
+    }
+</script>
+</body>
+</html>

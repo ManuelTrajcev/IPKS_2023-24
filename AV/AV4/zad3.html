@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+
+    let str = "Hello how are you today"
+
+    console.log(parametrize(str))
+    function parametrize(str) {
+        let parts = str.split(" ")
+        let result = parts[0]
+        for (let i = 1; i < parts.length; i++) {
+            result+= "-" + parts[i]
+        }
+        return result
+    }
+</script>
+</body>
+</html>

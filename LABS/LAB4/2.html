@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: auto;
+        }
+
+        #inputs {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            gap: 2px;
+        }
+
+        #labels, #choices {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        #labels {
+            gap: 18px;
+            align-items: end;
+        }
+
+        #choices > select {
+            width: 100%;
+            background-color: #e4e4e4;
+        }
+
+        #insert {
+            margin: 10px 10px 10px 160px;
+        }
+
+    </style>
+</head>
+<body>
+<div id="container">
+    <div id="inputs">
+        <div id="labels">
+            <label for="items">Items:</label>
+            <label for="type">Type:</label>
+        </div>
+        <div id="choices">
+            <input type="text" id="items">
+            <select name="type" id="type">
+                <option value="checkbox">Check box</option>
+                <option value="radio">Radio button</option>
+            </select>
+        </div>
+    </div>
+    <button id="insert" onclick="showResult()">Прикажи</button>
+    <div id="root">
+    </div>
+</div>
+
+<script type="text/javascript">
+    function showResult() {
+        let items = document.getElementById("items")
+        let itemList = items.value.split(",")
+        console.log(itemList[0])
+        let type = document.getElementById("type").value
+        let root = document.getElementById("root")
+
+        if (items && items) {
+            items.value = ""
+            let el = document.createElement("div")
+            for (let i = 0; i < itemList.length; i++) {
+                let btn = document.createElement("input")
+                btn.type = type
+                btn.name = "button"
+                let label = document.createElement("label")
+                label.innerHTML = itemList[i]
+                console.log(label)
+                el.appendChild(btn)
+                el.appendChild(label)
+            }
+            console.log(el)
+            document.getElementById("root").appendChild(el)
+        } else {
+            alert("Пополни ги сите полиња")
+        }
+    }
+</script>
+</body>
+</html>

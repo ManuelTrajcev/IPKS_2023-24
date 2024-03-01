@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    let n = prompt("Внеси мобилен број")
+    if (!n.startsWith("07") || n.length != 9){
+        alert("Внесовте не валиден мобилен број")
+    }
+    let p1 = n.substring(0, 3);
+    let p2 = n.substring(3, 6);
+    let p3 = n.substring(6);
+    let operaotr = ""
+    if (p1.endsWith(0) || p1.endsWith(1) || p1.endsWith(2)) operaotr = "T-mobile"
+    if (p1.endsWith(5) || p1.endsWith(6)) operaotr = "One"
+    if (p1.endsWith(7) || p1.endsWith(8)) operaotr = "Vip"
+    let mobile = p1 + '/' + p2 + '-' + p3 + '-' + operaotr
+    console.log(mobile)
+</script>
+</body>
+</html>

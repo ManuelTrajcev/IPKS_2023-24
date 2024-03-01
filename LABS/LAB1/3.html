@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    let x1 = prompt("Внеси го првиот стринг")
+    let x2 = prompt("Внеси го вториот стринг")
+    let x3 = prompt("Внеси го тетиот стринг")
+    let words1 = x1.split(" ")
+    let words2 = x2.split(" ")
+    let words3 = x3.split(" ")
+
+    let max = 0
+    let maxString = ""
+    for (let i = 0; i < words1.length; i++) {
+        if (words1[i].length > max) {
+            max = words1[i].length
+            maxString = words1[i]
+        }
+    }
+    for (let i = 0; i < words2.length; i++) {
+        if (words2[i].length > max) {
+            max = words2[i].length
+            maxString = words2[i]
+        }
+    }
+    for (let i = 0; i < words3.length; i++) {
+        if (words3[i].length > max) {
+            max = words3[i].length
+            maxString = words3[i]
+        }
+    }
+    alert("Најдол збор во претоходно внесените 3 стринга е:\n" + maxString)
+</script>
+</body>
+</html>

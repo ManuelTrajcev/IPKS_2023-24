@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>style</title>
+</head>
+<body>
+<p id="text">
+    Change my style
+</p>
+<button id="jstyle" onclick="changeStyle()">
+    Style
+</button>
+<script>
+    function changeStyle() {
+        console.log("click")
+        var x = document.getElementById("text")
+        x.style.color = "red"
+        x.style.font = "Comic Sans MS"
+        x.style.fontSize = "22px"
+    }
+</script>
+</body>
+</html>

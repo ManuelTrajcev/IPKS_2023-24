@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #container {
+            width: 800px;
+            height: 500px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: auto;
+        }
+
+        #inputs {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            gap: 2px;
+        }
+
+        #labels {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        #choices {
+            margin-bottom: 15px;
+            margin-left: 77px;
+        }
+
+        #labels {
+            gap: 18px;
+            align-items: end;
+        }
+
+        #choices > select {
+            width: 100%;
+            background-color: #e4e4e4;
+        }
+
+        #insert {
+            margin: 10px 10px 10px 152px;
+        }
+
+    </style>
+</head>
+<body>
+<div id="container">
+    <h1>Промена на позадина</h1>
+    <div id="choices">
+        <input type="radio" id="color" name="type">
+        <label for="color">Color</label>
+        <input type="radio" id="image" name="type">
+        <label for="image">Image</label>
+    </div>
+    <div id="inputs">
+        <div id="labels">
+            <label for="value">Value:</label>
+        </div>
+        <input type="text" id="value">
+
+
+    </div>
+    <button id="insert" onclick="setBackground()">Промени</button>
+    <div id="root">
+    </div>
+</div>
+
+<script type="text/javascript">
+    function setBackground() {
+        let type = document.getElementsByName("type")
+        type = type[0].checked ? "color" : "image"
+        let value = document.getElementById("value")
+        if (value) {
+            let bg = document.getElementById("container")
+            if (type === "color") {
+                bg.style.backgroundImage = ""
+                bg.style.backgroundColor = value.value
+            } else {
+                let img = document.createElement("img")
+                img.src = value.value
+                bg.style.backgroundImage = "url(" + value.value + ")"
+                bg.style.backgroundRepeat = "no-repeat"
+                bg.style.backgroundSize = "100%"
+            }
+        } else {
+            alert("Пополни ги сите полиња")
+        }
+    }
+</script>
+</body>
+</html>

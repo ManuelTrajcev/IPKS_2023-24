@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script type="text/javascript">
+const xhr = new XMLHttpRequest()
+xhr.onreadystatechange = function () {
+  if (xhr.status === 200) {
+    const jsonData = JSON.parse(xhr.responseText)
+    console.log(jsonData)
+  } else {
+    console.error("ERROR")
+  }
+}
+xhr.onerror = function () {
+  console.error("Network Error")
+  xhr.send()
+}
+</script>
+
+</body>
+</html>

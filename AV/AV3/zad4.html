@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button onclick="isPrime()">Generate a number</button>
+<p id="num"></p>
+<p id="result"></p>
+<script>
+    function isPrime() {
+        var x = Math.floor(Math.random() * 100 + 1)
+        var r = document.getElementById("result")
+        var n = document.getElementById("num")
+        n.innerHTML = x
+        console.log(x)
+        for (let i = 2; i < x / 2; i++) {
+            if (x % i == 0) {
+                r.innerHTML = "Not Prime"
+                console.log("Not prime")
+                return
+            }
+        }
+        r.innerHTML = "Prime"
+        console.log("Prime")
+    }
+</script>
+</body>
+</html>

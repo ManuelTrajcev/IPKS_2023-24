@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #project-list {
+            border: solid black 1px;
+            margin: 10px;
+            width: 500px;
+        }
+
+        #project-list tbody:nth-child(2n) {
+            background: yellow;
+        }
+
+        #project-list {
+            border-collapse: collapse;
+        }
+
+        #container {
+            width: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+        }
+    </style>
+</head>
+<body>
+<h1>Project details</h1>
+<div id="container">
+    <span>Author <input type="text" id="author"></span>
+    <br>
+    <span>Project <input type="text" id="project"></span>
+    <br>
+    <span>Cost <input type="number" id="cost"></span>
+    <br>
+    <button id="add" onclick="add()">Add</button>
+
+
+</div>
+<h1>Total cost:<span id="total-cost">0</span></h1>
+<table id="project-list">
+    <tr>
+        <th>Author</th>
+        <th>Project</th>
+        <th>Price</th>
+    </tr>
+</table>
+<script type="text/javascript">
+    let totalCost = 0
+    let tC = document.getElementById("total-cost")
+
+
+    function update(total) {
+        tC.innerHTML = total
+    }
+
+
+    function deleteEl(element, cost) {
+        element = element.parentNode
+        console.log(element)
+        element.parentNode.style.backgroundColor = "red"
+        element.parentNode.removeChild(element)
+        totalCost -= cost
+        update(totalCost)
+    }
+
+
+    function add() {
+        let author = document.getElementById("author")
+        let project = document.getElementById("project")
+        let cost = document.getElementById("cost")
+        let table = document.getElementById("project-list")
+        if (author.value && project.value && cost.value) {
+            table.innerHTML += "<tr><td>" + author.value + "</td><td>" + project.value + "</td><td>" + cost.value + "</td><td><button onclick='deleteEl(this, cost.value)'>Delete</button></td></tr>"
+        } else {
+            alert("Fill all the inputs")
+        }
+        totalCost += parseInt(cost.value)
+        update(totalCost)
+    }
+</script>
+</body>
+</html>

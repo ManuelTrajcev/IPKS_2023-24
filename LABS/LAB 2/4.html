@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        input {
+            margin: 3px;
+            width: 50px;
+        }
+
+        #add {
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+<input type="text" id="r1">
+<input type="text" id="i1"><span> i</span>
+<br>
+<input type="text" id="r2">
+<input type="text" id="i2"><span> i</span>
+<br>
+<button id="add" onclick="addition()">Add</button>
+<br>
+<input type="text" id="r-result">
+<input type="text" id="i-result"><span> i</span>
+<script type="text/javascript">
+    function addition() {
+        let r1 = document.getElementById("r1").value
+        let r2 = document.getElementById("r2").value
+        let i1 = document.getElementById("i1").value
+        let i2 = document.getElementById("i2").value
+        // console.log("click")
+        document.getElementById("r-result").value = parseInt(r1) + parseInt(r2)
+        document.getElementById("i-result").value = parseInt(i1) + parseInt(i2)
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html">
+    <script>
+        let first = ""
+        let second = ""
+        let correctAnswers = 0
+
+
+        function checkIfSame() {
+            if (first !== "" && second !== "") {
+                let firstImg = document.getElementById(first)
+                let secondImg = document.getElementById(second)
+                let firstClass = firstImg.getAttribute("class")
+                let secondClass = secondImg.getAttribute("class")
+                if (firstClass === secondClass) {
+                    // console.log("same")
+                    correctAnswers++
+                    if (correctAnswers === 8) {
+                        setTimeout(function () {
+                            alert("You won!")
+                            reset()
+                        }, 500)
+                        // console.log(first)
+                        // console.log(second)
+                        // console.log("wom")
+
+                    }
+                    first = ""
+                    second = ""
+                    // console.log(first)
+                    // console.log(second)
+                }
+
+            }
+        }
+
+        function openCard(id) {
+
+            let firstImg = document.getElementById(first)
+            let secondImg = document.getElementById(second)
+
+            if (firstImg != null && secondImg != null) {
+                firstImg.innerHTML = '<img src="memorGameCards/closed.png"/>'
+            }
+            if (first === "") {
+                first = id
+                firstImg = document.getElementById(first)
+                firstImg.innerHTML = `<img src=" memorGameCards/` + first + `.png"/>`
+            } else if (second === "") {
+                second = id
+                secondImg = document.getElementById(second)
+                secondImg.innerHTML = `<img src=" memorGameCards/` + second + `.png"/>`
+                checkIfSame()
+            } else {
+                first = second
+                second = id
+
+                firstImg = document.getElementById(first)
+                secondImg = document.getElementById(second)
+                firstImg.innerHTML = `<img src=" memorGameCards/` + first + `.png"/>`
+                secondImg.innerHTML = `<img src=" memorGameCards/` + second + `.png"/>`
+                checkIfSame()
+            }
+
+        }
+
+        function reset() {
+            let table = document.getElementById("table")
+            first = ""
+            second = ""
+            correctAnswers = 0
+            table.innerHTML = ('' +
+                '<tr>\n' +
+                '                <td id="11" onclick="openCard(11)" class="a"><img src="memorGameCards/closed.png" height="512"\n' +
+                '                                                                  width="512"/>\n' +
+                '                </td>\n' +
+                '                <td id="12" onclick="openCard(12)" class="b"><img src="memorGameCards/closed.png" height="512"\n' +
+                '                                                                  width="512"/>\n' +
+                '                </td>\n' +
+                '                <td id="13" onclick="openCard(13)" class="c"><img src="memorGameCards/closed.png" height="512"\n' +
+                '                                                                  width="512"/>\n' +
+                '                </td>\n' +
+                '                <td id="14" onclick="openCard(14)" class="d"><img src="memorGameCards/closed.png" height="512"\n' +
+                '                                                                  width="512"/>\n' +
+                '                </td>\n' +
+                '            </tr>\n' +
+                '            <tr>\n' +
+                '                <td id="21" onclick="openCard(21)" class="e"><img src="memorGameCards/closed.png" height="512"\n' +
+                '                                                                  width="512"/>\n' +
+                '                </td>\n' +
+                '                <td id="22" onclick="openCard(22)" class="e"><img src="memorGameCards/closed.png" height="512"\n' +
+                '                                                                  width="512"/>\n' +
+                '                </td>\n' +
+                '                <td id="23" onclick="openCard(23)" class="b"><img src="memorGameCards/closed.png" height="512"\n' +
+                '                                                                  width="512"/>\n' +
+                '                </td>\n' +
+                '                <td id="24" onclick="openCard(24)" class="f"><img src="memorGameCards/closed.png" height="512"\n' +
+                '                                                                  width="512"/>\n' +
+                '                </td>\n' +
+                '            </tr>\n' +
+                '            <tr>\n' +
+                '                <td id="31" onclick="openCard(31)" class="g"><img src="memorGameCards/closed.png" height="512"\n' +
+                '                                                                  width="512"/>\n' +
+                '                </td>\n' +
+                '                <td id="32" onclick="openCard(32)" class="d"><img src="memorGameCards/closed.png" height="512"\n' +
+                '                                                                  width="512"/>\n' +
+                '                </td>\n' +
+                '                <td id="33" onclick="openCard(33)" class="a"><img src="memorGameCards/closed.png" height="512"\n' +
+                '                                                                  width="512"/>\n' +
+                '                </td>\n' +
+                '                <td id="34" onclick="openCard(34)" class="h"><img src="memorGameCards/closed.png" height="512"\n' +
+                '                                                                  width="512"/>\n' +
+                '                </td>\n' +
+                '            </tr>\n' +
+                '            <tr>\n' +
+                '                <td id="41" onclick="openCard(41)" class="g"><img src="memorGameCards/closed.png" height="512"\n' +
+                '                                                                  width="512"/>\n' +
+                '                </td>\n' +
+                '                <td id="42" onclick="openCard(42)" class="h"><img src="memorGameCards/closed.png" height="512"\n' +
+                '                                                                  width="512"/>\n' +
+                '                </td>\n' +
+                '                <td id="43" onclick="openCard(43)" class="f"><img src="memorGameCards/closed.png" height="512"\n' +
+                '                                                                  width="512"/>\n' +
+                '                </td>\n' +
+                '                <td id="44" onclick="openCard(44)" class="c"><img src="memorGameCards/closed.png" height="512"\n' +
+                '                                                                  width="512"/>\n' +
+                '                </td>\n' +
+                '            </tr>')
+        }
+    </script>
+    <style>
+        img {
+            width: 50px;
+            height: 50px;
+        }
+
+        td {
+            padding: 5px;
+        }
+    </style>
+    <title>Title</title>
+</head>
+<body>
+<h1>Меморија</h1>
+<div>
+    <div style="text-align: left; float: left">
+        <table border="1" id="table">
+            <tr>
+                <td id="11" onclick="openCard(11)" class="a"><img src="memorGameCards/closed.png" height="512"
+                                                                  width="512"/>
+                </td>
+                <td id="12" onclick="openCard(12)" class="b"><img src="memorGameCards/closed.png" height="512"
+                                                                  width="512"/>
+                </td>
+                <td id="13" onclick="openCard(13)" class="c"><img src="memorGameCards/closed.png" height="512"
+                                                                  width="512"/>
+                </td>
+                <td id="14" onclick="openCard(14)" class="d"><img src="memorGameCards/closed.png" height="512"
+                                                                  width="512"/>
+                </td>
+            </tr>
+            <tr>
+                <td id="21" onclick="openCard(21)" class="e"><img src="memorGameCards/closed.png" height="512"
+                                                                  width="512"/>
+                </td>
+                <td id="22" onclick="openCard(22)" class="e"><img src="memorGameCards/closed.png" height="512"
+                                                                  width="512"/>
+                </td>
+                <td id="23" onclick="openCard(23)" class="b"><img src="memorGameCards/closed.png" height="512"
+                                                                  width="512"/>
+                </td>
+                <td id="24" onclick="openCard(24)" class="f"><img src="memorGameCards/closed.png" height="512"
+                                                                  width="512"/>
+                </td>
+            </tr>
+            <tr>
+                <td id="31" onclick="openCard(31)" class="g"><img src="memorGameCards/closed.png" height="512"
+                                                                  width="512"/>
+                </td>
+                <td id="32" onclick="openCard(32)" class="d"><img src="memorGameCards/closed.png" height="512"
+                                                                  width="512"/>
+                </td>
+                <td id="33" onclick="openCard(33)" class="a"><img src="memorGameCards/closed.png" height="512"
+                                                                  width="512"/>
+                </td>
+                <td id="34" onclick="openCard(34)" class="h"><img src="memorGameCards/closed.png" height="512"
+                                                                  width="512"/>
+                </td>
+            </tr>
+            <tr>
+                <td id="41" onclick="openCard(41)" class="g"><img src="memorGameCards/closed.png" height="512"
+                                                                  width="512"/>
+                </td>
+                <td id="42" onclick="openCard(42)" class="h"><img src="memorGameCards/closed.png" height="512"
+                                                                  width="512"/>
+                </td>
+                <td id="43" onclick="openCard(43)" class="f"><img src="memorGameCards/closed.png" height="512"
+                                                                  width="512"/>
+                </td>
+                <td id="44" onclick="openCard(44)" class="c"><img src="memorGameCards/closed.png" height="512"
+                                                                  width="512"/>
+                </td>
+            </tr>
+        </table>
+        <input type="submit" value="RESET" onclick="reset()">
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    function setBodyAttr(attr, value) {
+        if (document.body) {
+            eval('document.body.' + attr + '=' + value)
+        }
+
+        document.body[attr] = value //vtor nacin, pdobar
+    }
+</script>
+</body>
+</html>

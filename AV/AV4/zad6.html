@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    let str = " Hello how are you today"
+    console.log(cut(str, 14, "!"))
+
+    function cut(str, n, ends) {
+        if (typeof (ends) == "undefined") {
+            ends = "..."
+        }
+        if (n == null) {
+            n = 100
+        }
+        if (str.length > n) {
+          // return str.slice(0,n) + ends   //v1
+          return str.substring(0, n).concat(ends)   //v2
+        } else
+            return str
+    }
+</script>
+</body>
+</html>

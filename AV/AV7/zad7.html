@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+    console.log(generateArr('a', 'z', 2))
+
+    function generateArr(start, end, step) {
+        let res = []
+        if (start == null || end == null || step == null) {
+            console.log("invalid parameter")
+        }
+        if (typeof start == "number" && typeof end == "number") {
+            for (let i = start; i <= end; i += step) {
+                res.push(i)
+            }
+        } else if (typeof start == "string" && typeof end == "string") {
+            let startN = start.charCodeAt(0)
+            let endN = end.charCodeAt(0)
+            for (let i = startN; i <= endN; i += step) {
+                res.push(String.fromCharCode(i))
+            }
+        } else {
+            console.log("Start and End have different type")
+        }
+
+        return res
+    }
+
+</script>
+
+</body>
+</html>

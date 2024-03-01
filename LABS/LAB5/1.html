@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html">
+    <script>
+
+        function getResult() {
+            let a = document.getElementById("a").value
+            let b = document.getElementById("b").value
+            let operation = document.getElementsByName("oper")
+            let checked = Array.from(operation).find(a => a.checked)
+            // console.log(checked.value)
+            switch (checked.value) {
+                case "plus" :
+                    return parseFloat(a) + parseFloat(b)
+                case "minus" :
+                    return parseFloat(a) - parseFloat(b)
+                case "mnoz" :
+                    return parseFloat(a) * parseFloat(b)
+                case "del" :
+                    return parseFloat(a) / parseFloat(b)
+                case "sin" :
+                    return Math.sin(parseFloat(a))
+                case "cos" :
+                    return Math.cos(parseFloat(a))
+                case "tg" :
+                    return Math.tan(parseFloat(a))
+                case "cel" :
+                    return Math.floor(parseFloat(a))
+                case "stepen":
+                    return Math.pow(parseFloat(a), parseFloat(b))
+                case "koren" :
+                    return Math.sqrt(parseFloat(a))
+            }
+        }
+
+        function presmetaj() {
+            let res = document.getElementById("rezultati")
+            // console.log(getResult())
+            res.innerHTML = getResult()
+        }
+    </script>
+    <title>Title</title>
+</head>
+<body>
+<h1>Калкулатор</h1>
+<div>
+    <div style="text-align: left; float: left">
+        <p>
+            a <input id="a" style="width: 15px">
+            b <input id="b" style="width: 15px">
+        </p>
+        <p>
+            <input type="radio" id="plus" name="oper" value="plus" checked>a+b
+            <input type="radio" id="minus" name="oper" value="minus" checked>a-b
+            <input type="radio" id="mnoz" name="oper" value="mnoz" checked>a*b
+            <input type="radio" id="del" name="oper" value="del" checked>a/b
+            <br>
+            <input type="radio" id="sin" name="oper" value="sin" checked>sin(a)
+            <input type="radio" id="cos" name="oper" value="cos" checked>cos(a)
+            <input type="radio" id="tg" name="oper" value="tg" checked>tg(a)
+            <br>
+            <input type="radio" id="cel" name="oper" value="cel" checked>[a]
+            <input type="radio" id="stepen" name="oper" value="stepen" checked>a<sup>b</sup>
+            <input type="radio" id="koren" name="oper" value="koren" checked>&radic;<span
+                style="text-decoration: overline">a</span>
+        </p>
+        <button onclick="presmetaj()">Пресметај</button>
+        <p id="rezultati"></p>
+    </div>
+</div>
+</body>
+</html>

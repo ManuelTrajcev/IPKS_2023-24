@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<input type="text" id="number">
+<button id="left" onclick="moveLeft()"><</button>
+<button id="right" onclick="moveRight()">></button>
+<button id="convert" onclick="convert()">Convert</button>
+<button id="store" onclick="store()">Store</button>
+<button id="check" onclick="check()">Check</button>
+<br>
+<ul id="list">
+
+</ul>
+
+<script type="text/javascript">
+    let number = document.getElementById("number")
+    let l = document.getElementById("list")
+
+    function moveLeft() {
+        let a = number.value.charAt(0) + number.value.charAt(1)
+        number.value = number.value.substring(2) + a
+    }
+
+    function moveRight() {
+        let a = number.value.charAt(number.value.length - 2) + number.value.charAt(number.value.length - 1)
+        console.log(a)
+        number.value = a + number.value.substring(0, number.value.length - 2)
+    }
+
+    function convert() {
+
+    }
+
+    function store() {
+        l.innerHTML += ("<li>" + number.value + "</li>")
+        number.value = ""
+    }
+
+    function check() {
+
+    }
+
+</script>
+
+</body>
+</html>

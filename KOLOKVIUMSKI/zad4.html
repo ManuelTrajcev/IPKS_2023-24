@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .container-main {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        /*h1 {*/
+        /*    margin: auto;*/
+        /*}*/
+
+        .container {
+            width: 500px;
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
+        }
+
+        span, input {
+            display: inline-block;
+        }
+
+        .element {
+            display: flex;
+            justify-content: space-between;
+            margin: 5px;
+        }
+
+        button {
+            width: 70px;
+            margin: 5px;
+        }
+
+        #edrilica {
+            border: 1px solid black;
+        }
+
+        li {
+            padding: 5px;
+            margin-bottom: 10px;
+        }
+
+    </style>
+</head>
+<body>
+<div class="container-main">
+    <div class="element">
+        <h1>Регистрирај лет</h1>
+    </div>
+
+    <div class="container">
+        <div class="element">
+            <span>Име и презиме</span>
+            <input type="text" id="ime">
+        </div>
+        <div class="element">
+            <span>Ознака на летало</span>
+            <input type="text" id="oznaka">
+        </div>
+        <div class="element">
+            <span>Координати на лет</span>
+            <input type="text" id="koordinati">
+        </div>
+        <div class="element">
+            <span>Радиус на лет</span>
+            <input type="text" id="radius">
+        </div>
+        <div class="element">
+            <span>Висина на лет</span>
+            <input type="text" id="visina">
+        </div>
+        <div class="element">
+            <span>Тип на летало</span>
+            <select id="tip">
+                <option value="edrilica">Едрилица</option>
+                <option value="dron">Дрон</option>
+            </select>
+        </div>
+        <button id="najava" onclick="najavi()">Најави</button>
+    </div>
+    <div class="container">
+        <h2>Регистрирани летови</h2>
+        <p>Вкупно највени летови: <span id="counter">0</span></p>
+        <ul id="list">
+
+        </ul>
+    </div>
+</div>
+
+<script type="text/javascript">
+    let counter = 0
+
+    function updateList(counter) {
+        let count = document.getElementById("counter")
+        count.innerHTML = counter
+    }
+
+    function checkOznaka(oznaka) {
+        if (oznaka.length === 11 && oznaka.startsWith("Z3-UNR-")) {
+            let num = oznaka.slice(7)
+            if (!isNaN(num)) {
+                return true
+            }
+        }
+        return false
+    }
+
+    function otkazi(el) {
+        console.log("otkazi")
+        list = el.parentNode.parentNode
+        console.log(el)
+        list.removeChild(el.parentNode)
+    }
+
+    function potvrdi(el) {
+        console.log("ptovrdi")
+        el = el.parentNode
+        console.log(el)
+        el.style.backgroundColor = "lightgreen"
+    }
+
+    function najavi() {
+        let ime = document.getElementById("ime").value
+        let oznaka = document.getElementById("oznaka").value
+        let koordinati = document.getElementById("koordinati").value
+        let radius = document.getElementById("radius").value
+        let visina = document.getElementById("visina").value
+        let tip = document.getElementById("tip").value
+
+        document.getElementById("ime").value = ""
+        document.getElementById("oznaka").value = ""
+        document.getElementById("koordinati").value = ""
+        document.getElementById("radius").value = ""
+        document.getElementById("visina").value = ""
+        document.getElementById("tip").value = ""
+
+        if (ime && oznaka && koordinati && radius && visina && tip) {
+            if (checkOznaka(oznaka)) {
+                if (!(oznaka[7] === oznaka[8] == oznaka[9] == oznaka[10])) {
+                    if (parseInt(radius) > 500 || parseInt(visina) > 150) {
+                        alert("Radius ili visina ne soodvetni")
+                    } else {
+                        let lista = document.getElementById("list")
+                        let nameOf
+                        tip === "edrilica" ? nameOf = "Едрилица" : nameOf = "Дрон"
+
+
+                        if (tip === "edrilica" || (radius === visina)) {
+                            lista.innerHTML += ("<li id='edrilica'> " +
+                                "<p>" + ime + ", " + oznaka + "<br><br>Radius:" + radius + ", Visina: " + visina + "<br><br>" + nameOf + "</p><br>" +
+                                "<button id='potvrdi' onclick='potvrdi(this)'>Potvrdi</button>" + "<button id='otkazi' onclick='otkazi(this)'>Otkazi</button>" +
+                                "</li>")
+                        } else {
+                            lista.innerHTML += ("<li id='dron'> " +
+                                "<p>" + ime + ", " + oznaka + "<br><br>Radius:" + radius + ", Visina: " + visina + "<br><br>" + nameOf + "</p><br>" +
+                                "<button id='potvrdi' onclick='potvrdi(this)'>Potvrdi</button>" + "<button id='otkazi' onclick='otkazi(this)'>Otkazi</button>" +
+                                "</li>")
+                        }
+                        counter++
+                        updateList(counter)
+
+                    }
+                } else {
+                    console.log("isti")
+                }
+            } else {
+                alert("Ne validna oznaka")
+            }
+        } else {
+            alert("Ne se vneseni site podatoci")
+        }
+
+
+    }
+
+
+</script>
+</body>
+</html>

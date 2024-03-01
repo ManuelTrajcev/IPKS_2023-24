@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .element {
+            display: flex;
+            justify-content: space-between;
+            margin: 10px;
+        }
+
+        #root {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            width: 800px;
+        }
+
+        .column {
+            width: 400px;
+            margin: 10px;
+        }
+
+        input[type="text"] {
+            width: 190px;
+        }
+
+        select {
+            margin-right: 108px;
+        }
+
+        h1, h2 {
+            display: inline;
+            margin: 5px;
+        }
+
+        table, tr, td, th {
+            border-collapse: collapse;
+            border: solid black 1px;
+            justify-content: center;
+            align-items: center;
+        }
+        
+
+        td {
+            padding: 3px;
+            text-align: center;
+        }
+
+        #confirm {
+            margin-right: 4px;
+        }
+
+    </style>
+</head>
+<body>
+<div id="root">
+    <div class="column">
+        <h1>Details</h1>
+        <div class="element">
+            <span>Name</span>
+            <input type="text" id="name"/>
+        </div>
+        <div class="element">
+            <span>Index</span>
+            <input type="text" id="index"/>
+        </div>
+
+        <div class="element">
+            <span>Phone</span>
+            <input type="text" id="phone"/>
+        </div>
+
+        <div class="element">
+            <span>Grade</span>
+            <div id="grades">
+                <input name="grade" type="radio" value="5"/>5
+                <input name="grade" type="radio" value="6"/>6
+                <input name="grade" type="radio" value="7"/>7
+                <input name="grade" type="radio" value="8"/>8
+                <input name="grade" type="radio" value="9"/>9
+                <input name="grade" type="radio" value="10"/>10
+            </div>
+
+        </div>
+
+        <div class="element">
+            <span>Session</span>
+            <select id="session">
+                <option value="january">January</option>
+                <option value="june">June</option>
+                <option value="september">September</option>
+            </select>
+        </div>
+
+        <div class="element">
+            <button id="importStd" onclick="importStudent()">Import student</button>
+        </div>
+    </div>
+    <div class="column">
+        <h3>Revert history</h3>
+        <ul id="reverted"></ul>
+    </div>
+</div>
+<h1>Students</h1>
+<h2>(average grade: <span id="avg">0</span>)</h2>
+<br>
+<table id="students">
+    <tr>
+        <th>Name</th>
+        <th>Index</th>
+        <th>Phone</th>
+        <th>Grade</th>
+        <th>Session</th>
+        <th>Actions</th>
+    </tr>
+</table>
+
+
+<script type="text/javascript">
+    let counter = 0
+    let sum = 0
+
+    function updateAvg(counter, sum) {
+        console.log(counter)
+        console.log(sum)
+        let avg = document.getElementById("avg")
+        avg.innerHTML = (parseFloat(sum) / parseFloat(counter))
+
+    }
+
+
+    function formatPhone(p) {
+        console.log(p.length)
+        if (p.length == 9){
+            console.log(p.length)
+            for (let i = 0; i < 9; i++) {
+                if (isNaN(p[i])){
+                    alert("Invalid number")
+                    return false
+                }
+            }
+        } else {
+            alert("Invalid number")
+            return false
+        }
+        let formated = p[0] + p[1] + p[2] + '/' + p[3] + p[4] + p[5] + '-' + p[6] + p[7] + p[8]
+
+        return formated
+    }
+
+    function confirm(el) {
+        row = el.parentNode.parentNode
+        row.style.backgroundColor = "lightgreen"
+        el = el.parentNode
+        el.childNodes.item(0).setAttribute("disabled", true)
+        el.childNodes.item(1).setAttribute("disabled", true)
+    }
+
+    function revert(el) {
+        row = el.parentNode.parentNode
+        index = row.childNodes.item(1)
+        grade = row.childNodes.item(3)
+        console.log(index)
+        console.log(grade)
+        let list = document.getElementById("reverted")
+        list.innerHTML += ("<li>" + index.innerHTML + " - grade " + grade.innerHTML + "</li>")
+        counter--
+        sum = parseInt(sum) - parseInt(grade.innerHTML)
+        updateAvg(counter, sum)
+        row.parentNode.removeChild(row)
+    }
+
+
+    function importStudent() {
+        let name = document.getElementById("name").value
+        let index = document.getElementById("index").value
+        let phone = document.getElementById("phone").value
+        let grades = document.getElementsByName("grade")
+        let session = document.getElementById("session").value
+        let grade
+        let table = document.getElementById("students")
+
+        phone = formatPhone(phone)
+
+        for (let i = 0; i < grades.length; i++) {
+            if (grades[i].checked) {
+                grade = grades[i].value
+            }
+        }
+
+
+
+        if (name && index && phone && grade && session) {
+            table.innerHTML += ("<tr>" +
+                "<td>" + name + "</td>" + "<td>" + index + "</td>" + "<td>" + phone + "</td>" + "<td>" + grade + "</td>" + "<td>" + session + "</td>" +
+                "<td><button id='confirm' onclick='confirm(this)'>Confirm</button><button id='revert' onclick='revert(this)'>Revert</button></td>" +
+                "</tr>"
+            )
+        }
+
+        counter++
+        sum += parseInt(grade)
+        updateAvg(counter, sum)
+    }
+
+</script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<button id="start" onclick="clock.start()">Start</button>
+<br>
+<br>
+<button id="stop" onclick="clock.stop()">Stop</button>
+<div id="clock">00:00:00</div>
+
+<script>
+    //     start() {
+    //         let that = this                 //setInterval()     clearInterval(id na intervalot)
+    //         setInterval(() => that.update(), 1000)       // nema da rabote this.update
+    //
+    //
+    //         setInterval(this.update.bind(this), 1000) //vtor nacin
+    //
+    //         //tret nacin
+    //     }
+    let clockElement = document.getElementById("clock")
+
+    class Clock {
+        constructor() {
+            this.date = new Date()
+            this.hour = this.date.getHours()
+            this.minutes = this.date.getMinutes()
+            this.second = this.date.getSeconds()
+        }
+
+        update() {
+            this.date = new Date()
+            this.hour = this.date.getHours()
+            this.minutes = this.date.getMinutes()
+            this.second = this.date.getSeconds()
+            this.print()
+        }
+
+        start() {
+            let that = this
+            this.interval = setInterval(() => that.update(), 1000)
+        }
+
+        stop() {
+            clearInterval(this.interval)
+        }
+
+        print() {
+            console.log(this.hour + ":" + this.minutes + ":" + this.second)
+            clockElement.innerHTML = this.hour + ":" + this.minutes + ":" + this.second
+        }
+    }
+
+    let clock = new Clock()
+    // clock.start()
+
+
+
+</script>
+
+
+</body>
+</html>

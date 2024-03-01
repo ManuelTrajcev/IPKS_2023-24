@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 3px;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            width: 300px;
+            justify-content: space-between;
+
+        }
+
+        #outer {
+            display: flex;
+            flex-direction: row;
+        }
+
+        #post {
+            height: 70px;
+        }
+
+        #posts, tr, th, td {
+            border: solid black 1px;
+            border-collapse: collapse;
+        }
+
+        td {
+            padding-left: 5px;
+            padding-right: 5px;
+
+        }
+
+        #posts {
+            width: 600px;
+        }
+
+        #import {
+            width: 100px;
+        }
+
+        #removed-links {
+            margin-bottom: 5px;
+        }
+
+
+    </style>
+</head>
+<body>
+<div id="outer">
+    <div class="container">
+        <h1>Post details</h1>
+        <span>Title <input type="text" id="title"></span>
+        <br>
+        <span>Post <textarea id="post"></textarea></span>
+        <span>Content type:
+        <label>
+            <input name="type" type="radio" value="Free"/>
+            Free
+        </label>
+            <label>
+
+            <input name="type" type="radio" value="Paid"/>
+            Paid
+            </label>
+         </span>
+        <span>Category<select id="category">
+            <option value="science">Science</option>
+            <option value="education">Education</option>
+            <option value="industry">Industry</option>
+        </select></span>
+        <button id="import" onclick="importPost()">Import post</button>
+        <br>
+        <h1>Published Posts <span id="counter">0</span></h1>
+        <table id="posts">
+            <tr>
+                <th>Title</th>
+                <th>Post</th>
+                <th>Link</th>
+                <th>Type</th>
+                <th>Category</th>
+                <th>Actions</th>
+            </tr>
+        </table>
+
+    </div>
+
+    <div>
+        <h3>Removed links</h3>
+        <ul id="removed-links">
+        </ul>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    let counter = 0
+
+    function updateCounter(count) {
+        let counterEl = document.getElementById("counter")
+        counterEl.innerHTML = count
+    }
+
+    function removePost(el) {
+        let row = el.parentNode.parentNode
+        row.style.backgroundColor = "lightblue"
+        let rl = document.getElementById("removed-links")
+        let url = "ttps://www.finki.ukim.mk/en+"
+        let title = document.getElementById("title").value
+        url = url + title.replaceAll(" ", '-')
+        rl.innerHTML += ("<li>url</li>")
+        el = el.parentNode
+        el.childNodes.item(0).setAttribute("disabled", true)
+        el.childNodes.item(2).setAttribute("disabled", true)
+    }
+
+    function publishPost(el) {
+        counter++
+        updateCounter(counter)
+        let row = el.parentNode.parentNode
+        row.style.backgroundColor = "lightblue"
+
+        el = el.parentNode
+        el.childNodes.item(0).setAttribute("disabled", true)
+        el.childNodes.item(2).setAttribute("disabled", true)
+    }
+
+    function importPost() {
+        let title = document.getElementById("title").value
+        let post = document.getElementById("post").value
+        let type = document.getElementsByName("type")
+        let selected
+        for (let i = 0; i < type.length; i++) {
+            if (type[i].checked) {
+                selected = type[i].value
+            }
+        }
+        let category = document.getElementById("category").value
+        let table = document.getElementById("posts")
+        if (title && post && selected && category) {
+            table.innerHTML +=
+                "<tr>" +
+                "<td>" + title + "</td>" +
+                "<td>" + post + "</td>" +
+                "<td>https://www.finki.ukim.mk/en+" + title.replaceAll(' ', '-') + "</td>" +
+                "<td>" + selected + "</td>" +
+                "<td>" + category + "</td>" +
+                "<td><button id='publishing-btn' onclick='publishPost(this)'>Publish</button><br><button id='delleting-btn' onclick='removePost(this)'>Remove</button></td>" +
+                "</tr>"
+        } else {
+            alert("Inputs not filled")
+        }
+
+    }
+</script>
+</body>
+</html>

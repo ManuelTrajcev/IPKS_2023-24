@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<a id="glow" href="#" onmouseover="glow()" onmouseleave="glow()">Text will glow on hover</a>
+
+<script>
+    var x = document.getElementById("glow")
+    var isGlowing = true
+
+    function glow() {
+        if (isGlowing)
+            x.style.color = "lightgreen"
+        else
+            x.style.color = "black"
+        isGlowing = !isGlowing
+    }
+</script>
+</body>
+</html>

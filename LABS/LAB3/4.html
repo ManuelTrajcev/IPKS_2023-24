@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    let books = [
+        {
+            title: "Hamlet",
+            author: "William Shakespeare",
+            alreadyRead: true
+        },
+        {
+            title: "Les Miserables",
+            author: "Victor Hugo",
+            alreadyRead: false
+        },
+        {
+            title: "Crime and Punishment",
+            author: "Victor Hugo",
+            alreadyRead: true
+        },
+        {
+            title: "Don Quixote",
+            author: "Miguel de Cervantes",
+            alreadyRead: true
+        },
+        {
+            title: "The Alchemist",
+            author: "Paulo Coelho",
+            alreadyRead: false
+        }
+    ]
+
+    function printBooks(books) {
+        for (b of books) {
+            console.log((b.alreadyRead ? "You already read " : "You still need to read ") + b.title + " by " + b.author )
+        }
+    }
+
+    printBooks(books)
+</script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #container {
+            margin: auto;
+            padding-top: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: start;
+            border: 1px solid #252525;
+            border-radius: 3px;
+            width: 200px;
+            height: 150px;
+        }
+
+        #calcuate {
+            margin-top: 15px;
+            scale: 1.2;
+        }
+
+        label {
+            padding-bottom: 2px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="container">
+    <label for="bodyweigth">Телезна тежина</label>
+    <input type="number" id="bodyweigth">
+    <br>
+    <label for="height">Висина</label>
+    <input type="number" id="height">
+    <button id="calcuate" onclick="calculate()">Calculate</button>
+</div>
+
+<script type="text/javascript">
+    let bw = document.getElementById("bodyweigth")
+    let h = document.getElementById("height")
+    console.log(bw.value)
+    console.log(h.value)
+    function calculate() {
+        let bmi = bw.value / (h.value * h.value)
+        alert("BMI: " + bmi)
+    }
+
+</script>
+</body>
+</html>

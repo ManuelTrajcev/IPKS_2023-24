@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul>
+    <li>The</li>
+    <li>Test</li>
+</ul>
+<ul>
+    <li>Is</li>
+    <li>Passed</li>
+</ul>
+
+<script type="text/javascript">
+    document.onload = function () {
+        let elements = document.querySelectorAll('UL > LI:last-child')
+        for (let i = 0; i < elements.length; i++) {
+            alert(elements[i].innerHTML)
+        }
+    }
+</script>
+</body>
+</html>

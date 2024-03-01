@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    for (let i = 0; i <= 30; i++) {
+        if (i % 2 == 0){
+            p="парен број"
+        } else {
+            p="непарен број"
+        }
+        let el = document.createElement("h3")
+        let text = document.createTextNode(i + " е " + p)
+        el.appendChild(text)
+        document.write(el.outerHTML)
+    }
+
+</script>
+</body>
+</html>

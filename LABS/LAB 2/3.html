@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>About Me</h1>
+<ul>
+    <li>Name: <span id="name"></span>
+    <li>Index: <span id="index"></span>
+    <li>Hometown: <span id="hometown"></span>
+</ul>
+
+<script type="text/javascript">
+    document.body.style.fontFamily = 'Arial'
+    document.getElementById("name").innerHTML = "Manuel"
+    document.getElementById("index").innerHTML = "221046"
+    document.getElementById("hometown").innerHTML = "Shtip"
+    let lis = document.getElementsByTagName("li")
+
+    for (let l = 0; l < lis.length; l++) {
+        lis[l].style.backgroundColor = "red"
+    }
+
+</script>
+</body>
+</html>

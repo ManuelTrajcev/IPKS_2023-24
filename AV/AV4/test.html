@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test</title>
+
+    <style>
+        div {
+            padding: 2px;
+        }
+        label {
+            width: 100px;
+            display: inline-block;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+<body>
+<h1>Test</h1>
+
+<div><label>Author</label><input type="text" id="author"></div>
+<div><label>Project</label><input type="text" id="project"></div>
+<div><label>Cost</label><input type="text" id="cost"></div>
+<input type="button" id="btn" value="Прати" onclick="send()">
+<h2 id="total">Total cost: <span id="sum">0</span></h2>
+<br>
+
+<table id="projects">
+    <thead>
+    <th>Author</th>
+    <th>Project</th>
+    <th>Cost</th>
+    </thead>
+    <tbody id="tbody"></tbody>
+
+</table>
+
+<script type="text/javascript">
+    let total = 0
+
+    function removeRow(ref) {
+        console.log(ref.parentNode)
+       let row = ref.parentNode.parentNode
+        row.parentNode.removeChild(row)
+    }
+
+    function send() {
+        let author = document.getElementById("author").value
+        let project = document.getElementById("project").value
+        let cost = document.getElementById("cost").value
+
+
+
+        if (author == "" || project == "" || cost == "") {
+            alert("enter all fields")
+            return
+        }
+
+        let btn = document.createElement("button")
+        let t = document.createTextNode("Remove")
+        btn.appendChild(t)
+        btn.setAttribute('onclick', removeRow(btn))
+
+
+        let tableRef = document.getElementById("tbody")
+        let row = tableRef.insertRow(tableRef.rows.length)
+        let cell0 = row.insertCell(0)
+        let cell1 = row.insertCell(1)
+        let cell2 = row.insertCell(2)
+        let cell3 = row.insertCell(3)
+
+        cell0.innerHTML = author
+        cell1.innerHTML = project
+        cell2.innerHTML = cost
+        cell3.appendChild(btn)
+
+        total += parseInt(cost)
+
+        document.getElementById("sum").innerHTML = total
+
+    }
+
+</script>
+
+</body>
+</html>

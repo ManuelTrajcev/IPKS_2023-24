@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+    let a = [12, 32, 52, 312]
+    let b = [1, 32, 52, 312]
+    console.log(union(a, b))
+
+
+
+
+    function union(a, b) {
+        if (a == null || b == null || !Array.isArray(a) || !Array.isArray(b)) return null
+        return a.concat(b.filter(x => !a.includes(x)))
+    }
+</script>
+
+</body>
+</html>
